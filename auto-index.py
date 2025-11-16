@@ -131,7 +131,9 @@ def generate_index(root, dnames, fnames, depth):
         'icons': icons2,
         'style': style,
     })
-    with open(pjoin(root, 'index.html'), 'w') as fp:
+    os.makedirs(root, exist_ok=True)
+    index_path = pjoin(root, 'index.html')
+    with open(index_path, 'w') as fp:
         fp.write(minify(page))
 
 

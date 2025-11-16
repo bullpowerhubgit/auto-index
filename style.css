@@ -1,25 +1,104 @@
 body {
-    font-family: BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 1.1em; padding: 0 1em;
+    font-family: 'Segoe UI', BlinkMacSystemFont, Arial, sans-serif;
+    font-size: 1.08em;
+    margin: 0;
+    background: #f7f7fa;
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
-a:not(:hover) {text-decoration: none;}
-ul {padding: 0;}
-li {
-    list-style-type: none;
+header {
+    background: #3a7bd5;
+    color: #fff;
+    padding: 1.2em 2em 1em 2em;
+    box-shadow: 0 2px 8px #0001;
+}
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
     display: flex;
     align-items: center;
-    padding: 0.2em;
+    gap: 0.5em;
 }
-li .icon, li .noicon {min-height: 1.5em; min-width: 2em;}
-li .icon {background-size: 1.5em; background-repeat: no-repeat;}
-
-body {color: #202020;}
-a {color: #1a0dab;}
-a:visited {color: #681da8;}
+.folder-icon {
+    font-size: 1.2em;
+}
+.folder-path {
+    font-family: monospace;
+    background: #fff3;
+    padding: 0.1em 0.4em;
+    border-radius: 0.3em;
+}
+main {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2em 0 1em 0;
+}
+.file-list-container {
+    background: #fff;
+    border-radius: 0.7em;
+    box-shadow: 0 2px 12px #0002;
+    padding: 1.5em 2em;
+    min-width: 320px;
+    max-width: 600px;
+    width: 100%;
+}
+.file-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.file-list li {
+    display: flex;
+    align-items: center;
+    padding: 0.4em 0;
+    border-bottom: 1px solid #eee;
+    transition: background 0.15s;
+}
+.file-list li:last-child {
+    border-bottom: none;
+}
+.file-list .icon, .file-list .noicon {
+    min-width: 2em;
+    min-height: 1.5em;
+    margin-right: 0.7em;
+    display: inline-block;
+    vertical-align: middle;
+}
+.file-list .icon {
+    background-size: 1.5em;
+    background-repeat: no-repeat;
+}
+.file-list a {
+    color: #3a7bd5;
+    text-decoration: none;
+    font-weight: 500;
+    word-break: break-all;
+    flex: 1 1 auto;
+    transition: color 0.15s;
+}
+.file-list a:hover {
+    color: #23527c;
+    text-decoration: underline;
+}
+footer {
+    text-align: center;
+    padding: 1.2em 0 0.7em 0;
+    color: #888;
+    font-size: 0.95em;
+    background: none;
+}
 @media (prefers-color-scheme: dark) {
-    body {background: #1b1e20; color: #c8c8c8;}
-    a {color: #8ab4f8;}
-    a:visited {color: #c58af9;}
+    body {background: #181b20; color: #e0e0e0;}
+    header {background: #1a2a4a; color: #fff;}
+    .file-list-container {background: #23273a; box-shadow: 0 2px 12px #0006;}
+    .file-list li {border-bottom: 1px solid #2a2a2a;}
+    .folder-path {background: #fff1;}
+    a, .file-list a {color: #8ab4f8;}
+    a:visited, .file-list a:visited {color: #c58af9;}
 }
 {% for klass, data in icons.items() %}
 .{{klass}} .icon {background-image: url('{{data}}');}

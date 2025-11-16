@@ -1,22 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
-    <title>Index of {{root}}</title>
-{{style}}
+    <title>Index von {{root}}</title>
+    {{style}}
 </head>
 <body>
-    <h1>Index of {{root}}</h1>
-
-    <ul>
-        {% for name, klass, target in items %}
-            <li{% if klass %} class="{{klass}}"{% endif %}>
-            <span class="{% if klass in icons %}icon{% else %}noicon{% endif %}"></span>
-                <a href="{{name}}"{% if target %} target="{{target}}"{% endif %}>{{name}}</a>
-            </li>
-        {% endfor %}
-    </ul>
+    <header>
+        <h1><span class="folder-icon">📁</span> Index von <span class="folder-path">{{root}}</span></h1>
+    </header>
+    <main>
+        <div class="file-list-container">
+            <ul class="file-list">
+                {% for name, klass, target in items %}
+                <li{% if klass %} class="{{klass}}"{% endif %}>
+                    <span class="{% if klass in icons %}icon{% else %}noicon{% endif %}"></span>
+                    <a href="{{name}}"{% if target %} target="{{target}}"{% endif %}>{{name}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <small>Auto-Index &copy; {{"now"|date("%Y")}} | powered by <a href="https://github.com/bullpowerhubgit/auto-index" target="_blank">auto-index</a></small>
+    </footer>
 </body>
 </html>
